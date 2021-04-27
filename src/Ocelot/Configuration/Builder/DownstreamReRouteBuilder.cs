@@ -44,6 +44,7 @@ namespace Ocelot.Configuration.Builder
         private SecurityOptions _securityOptions;
         private string _downstreamHttpMethod;
         private Version _downstreamHttpVersion;
+        private bool _enableResponseDataPacker;
 
         public DownstreamRouteBuilder()
         {
@@ -262,6 +263,12 @@ namespace Ocelot.Configuration.Builder
             _downstreamHttpVersion = downstreamHttpVersion;
             return this;
         }
+        
+        public DownstreamRouteBuilder WithEnableResponseDataPacker(bool enableResponseDataPacker)
+        {
+            _enableResponseDataPacker = enableResponseDataPacker;
+            return this;
+        }
 
         public DownstreamRoute Build()
         {
@@ -299,7 +306,8 @@ namespace Ocelot.Configuration.Builder
                 _dangerousAcceptAnyServerCertificateValidator,
                 _securityOptions,
                 _downstreamHttpMethod,
-                _downstreamHttpVersion);
+                _downstreamHttpVersion,
+                _enableResponseDataPacker);
         }
     }
 }

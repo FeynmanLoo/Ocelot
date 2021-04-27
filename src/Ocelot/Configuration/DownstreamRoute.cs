@@ -41,7 +41,8 @@ namespace Ocelot.Configuration
             bool dangerousAcceptAnyServerCertificateValidator,
             SecurityOptions securityOptions,
             string downstreamHttpMethod,
-            Version downstreamHttpVersion)
+            Version downstreamHttpVersion, 
+            bool enableResponseDataPacker)
         {
             DangerousAcceptAnyServerCertificateValidator = dangerousAcceptAnyServerCertificateValidator;
             AddHeadersToDownstream = addHeadersToDownstream;
@@ -77,6 +78,7 @@ namespace Ocelot.Configuration
             SecurityOptions = securityOptions;
             DownstreamHttpMethod = downstreamHttpMethod;
             DownstreamHttpVersion = downstreamHttpVersion;
+            EnableResponseDataPacker = enableResponseDataPacker;
         }
 
         public string Key { get; }
@@ -113,5 +115,9 @@ namespace Ocelot.Configuration
         public SecurityOptions SecurityOptions { get; }
         public string DownstreamHttpMethod { get; }
         public Version DownstreamHttpVersion { get;  }
+        /// <summary>
+        /// 是否开启统一响应结构体包装器，{code:200,msg:"",data:{}}，缺省关闭
+        /// </summary>
+        public bool EnableResponseDataPacker { get; }
     }
 }

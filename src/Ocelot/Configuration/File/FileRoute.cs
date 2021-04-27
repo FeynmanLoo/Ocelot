@@ -24,6 +24,7 @@
             LoadBalancerOptions = new FileLoadBalancerOptions();
             SecurityOptions = new FileSecurityOptions();
             Priority = 1;
+            EnableResponseDataPacker = false;
         }
 
         public string DownstreamPathTemplate { get; set; }
@@ -57,5 +58,9 @@
         public bool DangerousAcceptAnyServerCertificateValidator { get; set; }
         public FileSecurityOptions SecurityOptions { get; set; }
         public string DownstreamHttpVersion { get; set; }
+        /// <summary>
+        /// 是否开启统一响应结构体包装器，{code:200,msg:"",data:{}}，缺省关闭
+        /// </summary>
+        public bool EnableResponseDataPacker { get; set; }
     }
 }
