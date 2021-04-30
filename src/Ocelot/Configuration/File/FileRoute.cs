@@ -25,6 +25,7 @@
             SecurityOptions = new FileSecurityOptions();
             Priority = 1;
             EnableResponseDataPacker = false;
+            EnableDebug = false;
         }
 
         public string DownstreamPathTemplate { get; set; }
@@ -62,5 +63,9 @@
         /// 是否开启统一响应结构体包装器，{code:200,msg:"",data:{}}，缺省关闭
         /// </summary>
         public bool EnableResponseDataPacker { get; set; }
+        /// <summary>
+        /// 是否开启调试模式
+        /// </summary>
+        public bool EnableDebug { get; set; }
     }
 }
