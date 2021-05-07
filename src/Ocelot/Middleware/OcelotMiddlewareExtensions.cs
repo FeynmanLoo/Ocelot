@@ -96,6 +96,9 @@
             {
                 var newInternalConfig = await internalConfigCreator.Create(config);
                 internalConfigRepo.AddOrReplace(newInternalConfig.Data);
+                builder.ApplicationServices.GetService<IOcelotLoggerFactory>()?
+                    .CreateLogger<FileConfiguration>()
+                    .LogDebug($"fileConfig Change => {config}");
             });
 
             var adminPath = builder.ApplicationServices.GetService<IAdministrationPath>();
