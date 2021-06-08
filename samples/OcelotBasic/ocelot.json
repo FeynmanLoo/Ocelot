@@ -1,21 +1,25 @@
 {
-  "Routes": [
-    {
-      "DownstreamPathTemplate": "/todos/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "jsonplaceholder.typicode.com",
-          "Port": 443
-        }
-      ],
-      "UpstreamPathTemplate": "/posts/{id}",
-      "UpstreamHttpMethod": [
-        "Get"
-      ]
-    }
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5000"
-  }
+  "Routes": [{
+    "EnableResponseDataPacker": false,
+    "EnableDebug": false,
+    "DownstreamPathTemplate": "/{url}",
+    "DownstreamScheme": "https",
+    "DownstreamHostAndPorts": [{
+      "Host": "tocapi.myj.com.cn",
+      "Port": 443
+    }],
+    "UpstreamPathTemplate": "/{url}",
+    "UpstreamHttpMethod": ["Get", "Post", "Delete", "Put", "Option"]
+  }, {
+    "EnableResponseDataPacker": true,
+    "EnableDebug": true,
+    "DownstreamPathTemplate": "/{url}",
+    "DownstreamScheme": "http",
+    "DownstreamHostAndPorts": [{
+      "Host": "httpbin.org",
+      "Port": 80
+    }],
+    "UpstreamPathTemplate": "/httpbin/{url}",
+    "UpstreamHttpMethod": ["Get", "Post", "Delete", "Put", "Option"]
+  }]
 }
